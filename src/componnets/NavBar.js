@@ -1,27 +1,26 @@
-import React, { Fragment } from 'react'
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
+import React, { Fragment } from "react";
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from '../assets/img/logo3.png'
+import logo from "../assets/img/logo3.png";
 
 const NavBar = (props) => {
-    
-    return (
-        <Fragment>
+  return (
+    <Fragment>
+      <Navbar bg="primary" variant="dark" expand="lg">
+        <Container>
+          <Link to={"/"}>
+            <Navbar.Brand>
+              <img src={logo} width="120" />
+            </Navbar.Brand>
+          </Link>
 
-            <Navbar bg="primary" variant="dark" expand="lg">
-                <Container>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-                    <Link to={'/'}>
-                    <Navbar.Brand ><img src={logo} width='120' /></Navbar.Brand>
-                    </Link>
+          <Navbar.Collapse id="basic-navbar-nav" style={{ flexGrow: 0 }}>
+            <Nav>
+              <Nav.Link href="/">Home</Nav.Link>
 
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-                    <Navbar.Collapse id="basic-navbar-nav" style={{ flexGrow: 0 }}>
-                        <Nav>
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/artmin">Login</Nav.Link>
-                            {/* <Nav.Link href="#link">Link</Nav.Link>
+              {/* <Nav.Link href="#link">Link</Nav.Link>
                             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -29,13 +28,12 @@ const NavBar = (props) => {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown> */}
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-            </Navbar>
-
-            {/* <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      {/* <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div className='container d-flex'>
                     <div>
                         <a class="navbar-brand" href="#">
@@ -75,8 +73,8 @@ const NavBar = (props) => {
                     </div>
                 </div>
             </nav> */}
-        </Fragment>
-    )
-}
+    </Fragment>
+  );
+};
 
 export default NavBar;

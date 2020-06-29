@@ -6,7 +6,7 @@ const Carousels = () => {
     return (
         <Fragment>
             <div>
-                <h3>Topik Pilihans</h3>
+                <h3>Topik Pilihan</h3>
             </div>
             <Carousel className='mt-2'>
                 <Carousel.Item>

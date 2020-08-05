@@ -28,6 +28,19 @@ body {
   display: flex;
   padding: 0 1rem;
   margin: 1rem 0;
+  justify-content: space-between;
+}
+
+.content-card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.post-card {
+  display: flex;
+}
+.post-card p {
+  text-align: left !important;
 }
 
 .bg-e5 {
@@ -186,7 +199,62 @@ main {
   padding: 0px 5px;
 }
 
+.card-login {
+  width: 40vw;
+}
+
+.title-post-dashboard {
+  max-width: 55vw;
+}
+
+.box-toast {
+  position: fixed;
+  z-index: 5;
+  top: 10px;
+  right: 10px;
+}
+
+.container-create-post {
+  padding: 1rem;
+}
+
+.autocomplete-box {
+  position: absolute;
+  width: 98%;
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.autocomplete-content {
+  /* border-bottom: 1px solid #000; */
+  padding: 5px;
+}
+
+.autocomplete-content:hover {
+  background-color: #e5e5e5;
+}
+.cursor {
+  cursor: pointer;
+}
+.autocomplete-content:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  background-color: #ececec;
+}
+
+.autocomplete-container {
+  width: 100%;
+  position: relative;
+}
+
 /* mobile */
+
+@media screen and (max-width: 996px) {
+  .title-post-dashboard {
+    max-width: 45vw;
+  }
+}
 
 @media screen and (max-width: 767px) {
   .body-card {
@@ -208,5 +276,23 @@ main {
   }
   .box {
     width: 100%;
+  }
+  .card-login {
+    width: 90vw;
+  }
+  .title-post-dashboard {
+    max-width: 50vw;
+  }
+  .action-post-dashboard {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .card-login {
+    width: 560px;
+  }
+  .title-post-dashboard {
+    max-width: 55rem;
   }
 }

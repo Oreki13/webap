@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "../assets/img/logo3.png";
+import logo from "../../../assets/img/logo3.png";
 
 const NavBar = (props) => {
   return (

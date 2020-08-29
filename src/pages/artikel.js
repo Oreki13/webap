@@ -18,6 +18,7 @@ import { myObject } from "../dummy/data";
 const Artikel = (props) => {
   const response = useSelector((state) => ({
     artikel: state.artikel.artikel,
+    pilihan: state.artikel.other,
     filter_visit: state.artikel.filter_visit,
     kategori: state.kategori.listKategori.message,
     loadingArtikel: state.kategori.isLoading,
@@ -69,7 +70,11 @@ const Artikel = (props) => {
                           content="%PUBLIC_URL%/favicon.ico"
                         />
                       </MetaTags>
-                      <CardH {...props} datas={response.artikel.message} />
+                      <CardH
+                        {...props}
+                        pilihan={response.pilihan.message}
+                        datas={response.artikel.message}
+                      />
                     </>
                   ) : (
                     <p>Loading</p>

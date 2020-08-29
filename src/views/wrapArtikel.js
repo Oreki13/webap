@@ -16,7 +16,11 @@ import { Container } from "react-bootstrap";
 import { myObject } from "../dummy/data";
 
 // Action
-import { listArtikel, buatKamu } from "../redux/actions/artikel";
+import {
+  listArtikel,
+  buatKamu,
+  artikelPilihan,
+} from "../redux/actions/artikel";
 import { listKategori } from "../redux/actions/kategori";
 
 const Wrap = (props) => {
@@ -41,6 +45,7 @@ const Wrap = (props) => {
     dispatch(listArtikel());
     dispatch(buatKamu());
     dispatch(listKategori());
+    dispatch(artikelPilihan());
   }, []);
 
   useEffect(() => {

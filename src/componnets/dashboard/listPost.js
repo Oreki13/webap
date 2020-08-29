@@ -9,6 +9,8 @@ import { faCommentAlt, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import localStorage from "local-storage";
 import { checkToken } from "../../redux/actions/user";
+import { Link } from "react-router-dom";
+import { deleteArtikel } from "../../redux/actions/artikel";
 
 const detail = (coment) => {
   return (
@@ -31,18 +33,20 @@ const detail = (coment) => {
 };
 
 const Action = (props) => {
-  const { id, goEdit } = props;
+  const { id, goEdit, judul, goDelete } = props;
   return (
     <div>
-      <FontAwesomeIcon
-        className="mr-3"
-        size="lg"
-        color="#2b2b2b"
-        data-toggle="tooltip"
-        data-placement="bottom"
-        title="Lihat"
-        icon={faEye}
-      />
+      <Link target="_blank" to={"/artikel/" + encodeURIComponent(judul)}>
+        <FontAwesomeIcon
+          className="mr-3"
+          size="lg"
+          color="#2b2b2b"
+          data-toggle="tooltip"
+          data-placement="bottom"
+          title="Lihat"
+          icon={faEye}
+        />
+      </Link>
       <FontAwesomeIcon
         className="mr-3"
         size="lg"
@@ -58,6 +62,7 @@ const Action = (props) => {
         color="#2b2b2b"
         data-toggle="tooltip"
         data-placement="bottom"
+        onClick={() => goDelete(id)}
         title="Hapus"
         icon={faTrashAlt}
       />
@@ -88,12 +93,17 @@ const ListPost = (props) => {
       props.history.push("/artmin");
     }
   };
+
+  const handleDelete = (id) => {
+    dispatch(deleteArtikel(id));
+  };
   const { height } = Dimen();
 
   const [hovId, setHovId] = useState("");
+  const [hovTitle, setHovTitle] = useState("");
   return (
     <Container>
-      <div className="d-flex justify-content-between mb-2">
+      <div className="d-flex justify-content-between mb-2 mt-4">
         <h3>Post</h3>
         <Button onClick={() => goCreate()}> Buat Artikel</Button>
       </div>
@@ -101,12 +111,15 @@ const ListPost = (props) => {
         style={{ overflowY: "scroll", height: height - 170 }}
         className="p-2"
       >
-        {response.isLoading ? (
+        {response.artikel.message === undefined ? (
           <p>Loading...</p>
         ) : (
           response.artikel.message.map((data, key) => (
             <div
-              onMouseEnter={(e) => setHovId(data.id)}
+              onMouseEnter={(e) => {
+                setHovId(data.id);
+                setHovTitle(data.title);
+              }}
               onMouseLeave={() => setHovId("")}
               className={
                 hovId === data.id
@@ -134,7 +147,12 @@ const ListPost = (props) => {
                 </div>
                 <div className="action-post-dashboard">
                   {hovId === data.id ? (
-                    <Action goEdit={goEdit} id={hovId} />
+                    <Action
+                      goDelete={handleDelete}
+                      goEdit={goEdit}
+                      id={hovId}
+                      judul={hovTitle}
+                    />
                   ) : (
                     detail(data.comment)
                   )}

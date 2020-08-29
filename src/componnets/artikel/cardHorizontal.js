@@ -19,7 +19,7 @@ import ReactHtmlParser, {
 
 const CardH = (props) => {
   const path = props.match.path;
-  const { datas } = props;
+  const { datas, pilihan } = props;
 
   function transform(node) {
     // do not render any <span> tags
@@ -34,16 +34,17 @@ const CardH = (props) => {
       // console.log(node);
     }
   }
+
   return (
     <Fragment>
-      {path !== "/" ? null : <Carousel />}
+      {path !== "/" ? null : <Carousel pilihan={pilihan} />}
       <div className="mt-3">
         <h3>Artikel</h3>
       </div>
       {datas.map((data, key) => (
         <div className="card mb-3 no-border shadows">
           <div className="mt-3">
-            <Link to={"/artikel/" + data.id}>
+            <Link to={"/artikel/" + encodeURIComponent(data.title)}>
               <h5 className="px-3 card-title">{data.title}</h5>
             </Link>
             <div className="d-flex justify-content-between bg-e5 px-3 py-2">

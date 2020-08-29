@@ -33,6 +33,7 @@ const EditPost = (props) => {
   const [preview, setPrivew] = useState();
   const [autocomplete, setAutocomplete] = useState(false);
   const [idLabel, setIdLabel] = useState("");
+  const [pilihan, setPilihan] = useState(false);
   const wraper = useRef(null);
 
   useEffect(() => {
@@ -41,7 +42,8 @@ const EditPost = (props) => {
   }, []);
 
   useEffect(() => {
-    if (response.artikel) {
+    if (response.artikel.other_data) {
+      setPilihan(response.artikel.other_data.pilihan);
       setContent(response.artikel.post);
     }
   }, [response.artikel]);
@@ -127,9 +129,11 @@ const EditPost = (props) => {
       form.set("thumbnail", thumbnail[0]);
       form.set("caption_img", caption);
       form.set("post", content);
+      form.set("pilihan", pilihan);
       console.log(judul);
 
       dispatch(editArtikel(id, form));
+      props.history.push("/ksrt");
     }
   };
 
@@ -223,6 +227,15 @@ const EditPost = (props) => {
                   onChange={(w) => dropImage(w)}
                   imgExtension={[".jpg", ".gif", ".png", ".gif"]}
                   maxFileSize={5242880}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Check
+                  type="switch"
+                  id="custom-switch"
+                  onChange={() => setPilihan(!pilihan)}
+                  checked={pilihan}
+                  label="Jadikan Sebagai Pilihan "
                 />
               </Form.Group>
               <Button onClick={() => publish()} variant="primary" block>

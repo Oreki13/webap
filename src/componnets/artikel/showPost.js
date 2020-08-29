@@ -26,7 +26,7 @@ const ShowPost = (props) => {
   const artId = props.match.params.id;
 
   useEffect(() => {
-    dispatch(getByIdArtikel(artId));
+    dispatch(getByIdArtikel(decodeURIComponent(artId)));
     document.title = response.artikel_id.title;
   }, [artId]);
 

@@ -1,35 +1,7 @@
-import React, { useState, useRef, Fragment } from "react";
-import JoditEditor from "jodit-react";
+import React from "react";
 
-const UpPost = () => {
-  const editor = useRef(null);
-  const [content, setContent] = useState("");
-  console.log(content);
-
-  const tmp = "asdasdad";
-  const config = {
-    enter: "BR",
-    uploader: {
-      insertImageAsBase64URI: true,
-    },
-    readonly: false, // all options from https://xdsoft.net/jodit/doc/
-  };
-
-  return (
-    <Fragment>
-      <JoditEditor
-        ref={editor}
-        value={tmp}
-        config={config}
-        tabIndex={1} // tabIndex of textarea
-        onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-        onChange={(newContent) => {
-          document.getElementById("in-here").innerHTML = newContent;
-        }}
-      />
-      <div id="in-here"></div>
-    </Fragment>
-  );
+const Setting = (props) => {
+  return <h1>Hello</h1>;
 };
 
-export default UpPost;
+export default Setting;

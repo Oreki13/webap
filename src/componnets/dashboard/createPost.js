@@ -31,6 +31,7 @@ const CreatePost = (props) => {
   const [value, setValue] = useState();
   const [autocomplete, setAutocomplete] = useState(false);
   const [idLabel, setIdLabel] = useState("");
+  const [pilihan, setPilihan] = useState(false);
   const wraper = useRef(null);
 
   useEffect(() => {
@@ -87,9 +88,9 @@ const CreatePost = (props) => {
   };
 
   const setLabels = (id, name) => {
-    console.log("adasdkahjsdkjhaskdjh");
     setLabel(name);
     setIdLabel(id);
+    setAutocomplete(false);
   };
 
   const handeLabel = (e) => {
@@ -119,12 +120,13 @@ const CreatePost = (props) => {
       form.set("thumbnail", thumbnail[0]);
       form.set("caption_img", caption);
       form.set("post", content);
-      console.log(idLabel);
+      form.set("pilihan", pilihan);
 
       dispatch(publishArtikel(form));
+      props.history.push("/ksrt");
     }
   };
-  console.log(label);
+  console.log(pilihan);
   return (
     <div className="container-create-post">
       <Row>
@@ -233,6 +235,15 @@ const CreatePost = (props) => {
               maxFileSize={5242880}
               withPreview={false}
               singleImage={true}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              onChange={(e) => setPilihan(!pilihan)}
+              label="Jadikan Sebagai Pilihan "
+              checked={pilihan ? true : false}
             />
           </Form.Group>
           <Button onClick={() => publish()} variant="primary" block>

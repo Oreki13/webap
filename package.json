@@ -23,13 +23,14 @@
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
     "react-froala-wysiwyg": "^3.1.1-1",
+    "react-google-login": "^5.1.21",
     "react-html-parser": "^2.0.2",
     "react-images-upload": "^1.2.8",
     "react-meta-tags": "^0.7.4",
     "react-quill": "^1.3.5",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.3",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^6.1.2"
@@ -54,5 +55,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
   }
 }

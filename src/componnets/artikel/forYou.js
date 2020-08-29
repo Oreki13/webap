@@ -49,7 +49,7 @@ const ForYou = (props) => {
 
   return (
     <div className="card-foryu mb-3">
-      <Link to={"/artikel/" + datas.id}>
+      <Link to={"/artikel/" + encodeURIComponent(datas.title)}>
         <span className="title-foryu">{datas.title}</span>
       </Link>
 

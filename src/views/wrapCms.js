@@ -62,6 +62,7 @@ const WrapCms = (props) => {
       </div>
       {path === "/artmin" ? <CardLogin {...props} /> : null}
       {path === "/ksrt" ? <Dashboard {...props} /> : null}
+      {path === "/setting" ? <Dashboard {...props} /> : null}
     </Fragment>
   );
 };

@@ -64,8 +64,7 @@ const kategori = (state = initialState, action) => {
     case "POST_KATEGORI_FULFILLED":
       const res = action.payload.data.message;
       const datas = state.listSearch.message;
-      console.log(datas.message);
-      console.log(res);
+
       datas.push(res);
       return {
         ...state,

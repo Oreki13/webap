@@ -92,6 +92,32 @@ const artikel = (state = initialState, action) => {
         isFulfielled: true,
         byId: action.payload.data,
       };
+
+    case "COMEN_ADD":
+      const befores2 = state.byId.comments;
+      befores2.push(action.dataComen);
+
+      return {
+        ...state,
+        isLoading: false,
+        isFulfielled: true,
+        byId: { ...state.byId, comments: befores2 },
+      };
+    case "COMEN_REPLY":
+      const befores3 = state.byId.comments;
+      for (let x = 0; x < befores3.length; x++) {
+        if (befores3[x].id == action.dataComen.parent) {
+          befores3[x].reply.push(action.dataComen);
+        }
+      }
+      // befores2.push(action.dataComen);
+      // console.log(befores2);
+      return {
+        ...state,
+        isLoading: false,
+        isFulfielled: true,
+        byId: { ...state.byId, comments: befores3 },
+      };
     case "EDIT_ARTIKEL_PENDING":
       return {
         ...state,

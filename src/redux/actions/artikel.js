@@ -31,6 +31,18 @@ export const getByIdArtikel = (id) => {
     }),
   };
 };
+export const comenAdd = (data) => {
+  return {
+    type: "COMEN_ADD",
+    dataComen: data,
+  };
+};
+export const comenReply = (data) => {
+  return {
+    type: "COMEN_REPLY",
+    dataComen: data,
+  };
+};
 export const editArtikel = (id, data) => {
   return {
     type: "EDIT_ARTIKEL",

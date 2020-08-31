@@ -5,18 +5,21 @@ import localStorage from "local-storage";
 import { listArtikel } from "../redux/actions/artikel";
 import { checkToken } from "../redux/actions/user";
 
-//Pages
-import Dashboard from "../pages/dashboard";
-
-// Component
-import CardLogin from "../componnets/auth/cardLogin";
-import Toast from "../componnets/dashboard/lite/toast";
-
 // Bootstrap
 import { Container } from "react-bootstrap";
 
 // Dummy
 import { myObject } from "../dummy/data";
+
+//Pages
+const Dashboard = React.lazy(() => import("../pages/dashboard"));
+// import Dashboard from "../pages/dashboard";
+
+// Component
+const CardLogin = React.lazy(() => import("../componnets/auth/cardLogin"));
+// import CardLogin from "../componnets/auth/cardLogin";
+const Toast = React.lazy(() => import("../componnets/dashboard/lite/toast"));
+// import Toast from "../componnets/dashboard/lite/toast";
 
 const WrapCms = (props) => {
   const dispatch = useDispatch();

@@ -4,16 +4,20 @@ import Dimen from "../assets/functions/getDimensions";
 import { useSelector } from "react-redux";
 import MetaTags from "react-meta-tags";
 
-// Component
-
-import CardH from "../componnets/artikel/cardHorizontal";
-import ForYou from "../componnets/artikel/forYou";
-import Label from "../componnets/artikel/label";
-import ShowPost from "../componnets/artikel/showPost";
-import Comment from "../componnets/artikel/comments";
-
 import { Row, Col } from "react-bootstrap";
 import { myObject } from "../dummy/data";
+
+// Component
+const CardH = React.lazy(() => import("../componnets/artikel/cardHorizontal"));
+// import CardH from "../componnets/artikel/cardHorizontal";
+const ForYou = React.lazy(() => import("../componnets/artikel/forYou"));
+// import ForYou from "../componnets/artikel/forYou";
+const Label = React.lazy(() => import("../componnets/artikel/label"));
+// import Label from "../componnets/artikel/label";
+const ShowPost = React.lazy(() => import("../componnets/artikel/showPost"));
+// import ShowPost from "../componnets/artikel/showPost";
+const Comment = React.lazy(() => import("../componnets/artikel/comments"));
+// import Comment from "../componnets/artikel/comments";
 
 const Artikel = (props) => {
   const response = useSelector((state) => ({

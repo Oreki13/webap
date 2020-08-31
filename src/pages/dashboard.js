@@ -2,15 +2,26 @@ import React, { Fragment, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
 // Componnent
-import Sidebar from "../componnets/dashboard/lite/sidebar";
-import MySidebar from "../componnets/dashboard/lite/mysidebar";
-import Header from "../componnets/dashboard/lite/header";
-import Breadcom from "../componnets/dashboard/lite/breadcomp";
-import ListPost from "../componnets/dashboard/listPost";
-import UpPost from "../componnets/dashboard/upPost";
-import CreatePost from "../componnets/dashboard/createPost";
-import EditPost from "../componnets/dashboard/editPost";
-import Setting from "../componnets/dashboard/upPost";
+const MySidebar = React.lazy(() =>
+  import("../componnets/dashboard/lite/mysidebar")
+);
+// import Sidebar from "../componnets/dashboard/lite/sidebar";
+// import MySidebar from "../componnets/dashboard/lite/mysidebar";
+const Header = React.lazy(() => import("../componnets/dashboard/lite/header"));
+// import Header from "../componnets/dashboard/lite/header";
+// import Breadcom from "../componnets/dashboard/lite/breadcomp";
+const ListPost = React.lazy(() => import("../componnets/dashboard/listPost"));
+// import ListPost from "../componnets/dashboard/listPost";
+const UpPost = React.lazy(() => import("../componnets/dashboard/upPost"));
+// import UpPost from "../componnets/dashboard/upPost";
+const CreatePost = React.lazy(() =>
+  import("../componnets/dashboard/createPost")
+);
+// import CreatePost from "../componnets/dashboard/createPost";
+const EditPost = React.lazy(() => import("../componnets/dashboard/editPost"));
+// import EditPost from "../componnets/dashboard/editPost"
+const Setting = React.lazy(() => import("../componnets/dashboard/upPost"));
+// import Setting from "../componnets/dashboard/upPost";
 
 const Dashboard = (props) => {
   const [toggle, setToggle] = useState(false);

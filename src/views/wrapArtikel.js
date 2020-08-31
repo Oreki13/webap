@@ -2,13 +2,6 @@ import React, { Fragment, createRef, useEffect, useRef } from "react";
 import { Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-//Pages
-import Artikel from "../pages/artikel";
-
-// Component
-import NavBar from "../componnets/artikel/lite/navBar";
-import Footer from "../componnets/artikel/lite/footer";
-
 // Bootstrap
 import { Container } from "react-bootstrap";
 
@@ -23,6 +16,13 @@ import {
 } from "../redux/actions/artikel";
 import { listKategori } from "../redux/actions/kategori";
 
+//Pages
+const Artikel = React.lazy(() => import("../pages/artikel"));
+// import Artikel from "../pages/artikel";
+
+// Component
+const NavBar = React.lazy(() => import("../componnets/artikel/lite/navBar"));
+// import Footer from "../componnets/artikel/lite/footer";
 const Wrap = (props) => {
   const dispatch = useDispatch();
   const response = useSelector((state) => ({
@@ -48,9 +48,9 @@ const Wrap = (props) => {
     dispatch(artikelPilihan());
   }, []);
 
-  useEffect(() => {
-    document.querySelector("#tesz").scrollTop = 0;
-  });
+  // useEffect(() => {
+  //   document.querySelector("#tesz").scrollTop = 0;
+  // });
   // console.log(response);
 
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import logo from "./logo.svg";
@@ -6,9 +6,11 @@ import "./assets/css/mycss.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import store from "./redux/store";
 import { Provider } from "react-redux";
-import Wrap from "./views/wrapArtikel";
+// import Wrap from "./views/wrapArtikel";
+const Wrap = React.lazy(() => import("./views/wrapArtikel"));
 // import dotEnv from "dotenv";
-import WrapCms from "./views/wrapCms";
+// import WrapCms from "./views/wrapCms";
+const WrapCms = React.lazy(() => import("./views/wrapCms"));
 console.log(window.location.pathname.split("/"));
 
 const tees = () => {
@@ -22,11 +24,16 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path="/" exact render={(props) => <Wrap {...props} />} />
-          <Route path="/artikel/:id" render={(props) => <Wrap {...props} />} />
-          <Route path="/artmin" render={(props) => <WrapCms {...props} />} />
-          <Route path="/ksrt" render={(props) => <WrapCms {...props} />} />
-          <Route path="/setting" render={(props) => <WrapCms {...props} />} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Route path="/" exact render={(props) => <Wrap {...props} />} />
+            <Route
+              path="/artikel/:id"
+              render={(props) => <Wrap {...props} />}
+            />
+            <Route path="/artmin" render={(props) => <WrapCms {...props} />} />
+            <Route path="/ksrt" render={(props) => <WrapCms {...props} />} />
+            <Route path="/setting" render={(props) => <WrapCms {...props} />} />
+          </Suspense>
 
           <Route render={tees} />
         </Switch>

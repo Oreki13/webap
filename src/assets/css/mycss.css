@@ -221,6 +221,17 @@ main {
   border-radius: 7px;
   padding: 0px 5px;
 }
+.comment-name-reply {
+  background-color: #e27107;
+  color: #ffffff;
+  border-radius: 7px;
+  padding: 0px 5px;
+}
+.close-reply {
+  border-left: 1px solid;
+  padding-left: 0.4rem;
+  padding-right: 0.2rem;
+}
 
 .card-login {
   width: 40vw;
@@ -365,6 +376,13 @@ main {
 .menu-togel input:checked ~ span:last-child {
   background-color: #181818;
   transform: rotate(-45deg) translate(-1px, 2px);
+}
+.width-field-comment {
+  width: 42vw;
+}
+.img-centered {
+  object-fit: cover;
+  object-position: center;
 }
 /* mobile */
 
